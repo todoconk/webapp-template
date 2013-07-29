@@ -1,5 +1,5 @@
 {
-  "name": "webapp-template",
+  "name": "webapp-template-crud",
   "version": "0.0.1",
   "description": "A web application template that manages the mapping and dispatching of action handlers with powerful APIs for your application",
   "keywords": [
@@ -33,9 +33,9 @@
     "start": "server.js"
   },
   "engines": {
-    "node": ">= 0.4.x",
-    "npm": "1.1.x"
+    "node": ">= 0.10.x",
+    "npm": "1.2.x"
   },
-  "node": "0.6.19",
-  "subdomain": "watpl"
+  "node": "0.10.x",
+  "subdomain": "webapp-template-crud"
 }

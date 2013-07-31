@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-(function() {
+ (function() {
   'use strict';
 
   var root = this,
-    require = root.require;
+  require = root.require;
 
   //fake 'has' if it's not available
   var has = root.has = root.has || function() {
@@ -36,6 +36,7 @@
       'underscore': 'lib/underscore/underscore-1.4.2',
       'backbone': 'lib/backbone/backbone-0.9.2',
       'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
+      'socketio': '../socket.io/socket.io',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
       'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'
     },
@@ -43,6 +44,9 @@
     waitSeconds: has('prod') ? 2000 : 2, //2000 seconds for prod mode on bootstrap and 2 seconds for dev mode
 
     shim: {
+      'socketio': {
+        exports: 'io'
+      },
 
       json2: {
         exports: 'JSON'
@@ -54,10 +58,10 @@
 
       backbone: {
         deps:
-          [
-            'underscore',
-            'jquery'
-          ],
+        [
+        'underscore',
+        'jquery'
+        ],
         exports: 'Backbone'
       },
 
@@ -104,7 +108,7 @@
       updateModuleProgress = function(context, map, depMaps) {
         var document = root.document;
         var loadingStatusEl = document.getElementById('loading-status'),
-          loadingModuleNameEl = document.getElementById('loading-module-name');
+        loadingModuleNameEl = document.getElementById('loading-module-name');
 
         //first load
         if (loadingStatusEl && loadingModuleNameEl) {
@@ -123,11 +127,12 @@
   //load jquery plugins, backbone plugins //TODO this is a bit ugly
   require(
     [
-      'jquery',
-      'bootstrap',
-      'jquery.log',
-      'backbone',
-      'Backbone.ModelBinder'
+    'jquery',
+    'bootstrap',
+    'jquery.log',
+    'backbone',
+    'Backbone.ModelBinder',
+    'socketio'
     ],
     function($) {
 
@@ -137,12 +142,17 @@
       }
 
       //boot the application
-
+      var socket = io.connect('http://localhost');
+      socket.on('news', function (data) {
+        console.log(data);
+        socket.emit('my other event', { my: 'data' });
+      });
+      
       require(['app'], function(app) {
         app.initialize();
       });
     }
-  );
+    );
 
 }).call(this);
 

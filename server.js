@@ -15,7 +15,7 @@
  */
 
  var env = require('./lib/vsf/environment');
- var express = require('express');
+ var express = require('express')();
  var app = require('http').createServer(express);
  var io = require('socket.io').listen(app);
 
@@ -24,9 +24,23 @@
  var logger = require('./lib/logger');
 
 // Configuration
+app.listen(env.port(), function() {
+  logger.info('Listening on port: ' + env.port());
+});
+
+io.set('loglevel',10);
+
+io.sockets.on('connection', function (socket) {
+  socket.emit('init',{msg:"test"});
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+/*
 //basic html handling as jade
 app.register('.html', require('jade'));
-
+*/
 app.configure(function () {
   app.use(express.bodyParser());
   app.use(express.methodOverride());
@@ -50,13 +64,4 @@ app.configure('prod', function () {
   logger.handleExceptions();
 });
 
-app.listen(env.port(), function() {
-  logger.info('Listening on port: ' + env.port());
-});
 
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
-});

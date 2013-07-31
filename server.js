@@ -14,13 +14,14 @@
  * limitations under the License.
  */
 
-var env = require('./lib/vsf/environment');
-var express = require('express');
-var app = express.createServer();
+ var env = require('./lib/vsf/environment');
+ var express = require('express');
+ var app = require('http').createServer(express);
+ var io = require('socket.io').listen(app);
 
-var connectLess = require('connect-less');
-var winston = require('winston');
-var logger = require('./lib/logger');
+ var connectLess = require('connect-less');
+ var winston = require('winston');
+ var logger = require('./lib/logger');
 
 // Configuration
 //basic html handling as jade
@@ -51,4 +52,11 @@ app.configure('prod', function () {
 
 app.listen(env.port(), function() {
   logger.info('Listening on port: ' + env.port());
+});
+
+io.sockets.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
 });

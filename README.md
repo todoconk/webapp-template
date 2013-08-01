@@ -1,13 +1,9 @@
-# webapp-template [![Build Status](https://secure.travis-ci.org/hoatle/webapp-template.png?branch=master)](http://travis-ci.org/hoatle/webapp-template)
+# webapp-template [![Build Status](https://secure.travis-ci.org/todoconk/webapp-template-crud.png?branch=master)](http://travis-ci.org/todoconk/webapp-template-crud)
 
 Web application structure template (layout), starting point for backbone + requirejs + twitter bootstrap application compiled by nodejs and running on any web server or phonegap environment :-)
 
 ## Live development deployment at:
-* http://watpl-hoatle.dotcloud.com/
-* http://watpl.herokuapp.com
-* http://watpl.jit.su/ (dev mod)
-* http://watpl.ap01.aws.af.cm/ (dev mode)
-* http://watpl.nodester.com/ (dev mode)
+* http://webapp-template-crud.herokuapp.com
 
 ## MVC
 + take advantage of convention over configuration.

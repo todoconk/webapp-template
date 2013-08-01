@@ -10,10 +10,10 @@
     "type": "git",
     "url": "git@github.com/todoconk/webapp-template-crud.git"
     },
-    "author": "Hoat Le <hoatlevan@gmail.com> (http://hoatle.net)",
+    "author": "Krikor Krikorian <krikorian84@gmail.com> (http://todoconk.wordpress.com)",
     "contributors": [],
     "dependencies": {
-        "express": "3.0.0", 
+        "express": "2.5.11", 
         "socket.io": "0.9.16",
         "jade": "0.27.6",
         "winston": "0.6.2",

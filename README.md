@@ -15,7 +15,7 @@ Web application structure template (layout), starting point for backbone + requi
 
 ## Run the application
 
-+ Make sure to have latest node installed (with version as 0.6.x and above)
++ Make sure to have latest node installed (with version as 0.10.x and above)
 + Make sure to have 'make'
 
 + You must run this command first to have node modules installed: ```make``` or ```make resolve```

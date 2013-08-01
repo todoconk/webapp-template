@@ -23,7 +23,7 @@
   //fake 'has' if it's not available
   var has = root.has = root.has || function() {
     return false;
-  };
+};
 
   // Require.js allows us to configure shortcut alias
   require.config({
@@ -38,53 +38,58 @@
       'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
       'socketio': '/socket.io/socket.io',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
-      'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'
-    },
+      'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0',
+      'console': 'lib/console'
+  },
 
     waitSeconds: has('prod') ? 2000 : 2, //2000 seconds for prod mode on bootstrap and 2 seconds for dev mode
 
     shim: {
-      
-      'socketio': {
-        exports: 'io'
-      },
-      
-      json2: {
-        exports: 'JSON'
-      },
 
-      underscore: {
-        exports: '_'
-      },
+        'console': {
+            exports: 'console'
+        },
 
-      backbone: {
-        deps:
-        [
-        'underscore',
-        'jquery'
-        ],
-        exports: 'Backbone'
-      },
+        'socketio': {
+            exports: 'io'
+        },
 
-      'Backbone.ModelBinder': {
-        deps: ['backbone'],
-        exports: 'Backbone.ModelBinder'
-      },
+        json2: {
+            exports: 'JSON'
+        },
 
-      handlebars: {
-        exports: 'Handlebars'
-      },
+        underscore: {
+            exports: '_'
+        },
 
-      //jquery plugins
-      'bootstrap': ['jquery'],
+        backbone: {
+            deps:
+            [
+            'underscore',
+            'jquery'
+            ],
+            exports: 'Backbone'
+        },
 
-      'jquery.log': {
-        deps: ['jquery'],
-        exports: 'jQuery.fn.log'
-      }
+        'Backbone.ModelBinder': {
+            deps: ['backbone'],
+            exports: 'Backbone.ModelBinder'
+        },
+
+        handlebars: {
+            exports: 'Handlebars'
+        },
+
+        //jquery plugins
+        'bootstrap': ['jquery'],
+
+        'jquery.log': {
+            deps: ['jquery'],
+            exports: 'jQuery.fn.log'
+        }
     }
 
-  });
+});
 
   //this requires dom ready to update on ui, so this function expression
   //will be implemented later when domReady.
@@ -93,17 +98,17 @@
     var console = root.console;
     if (console && console.log) {
       console.log('loading: ' + map.name + ' at ' + map.url);
-    }
-  };
+  }
+};
 
 
-  require.onResourceLoad = function(context, map, depMaps) {
+require.onResourceLoad = function(context, map, depMaps) {
     updateModuleProgress(context, map, depMaps);
-  };
+};
 
 
 
-  require(['domReady'], function(domReady) {
+require(['domReady'], function(domReady) {
     domReady(function() {
       //re-implement updateModuleProgress here for domReady
       updateModuleProgress = function(context, map, depMaps) {
@@ -115,13 +120,13 @@
         if (loadingStatusEl && loadingModuleNameEl) {
           loadingStatusEl.innerHTML = loadingStatusEl.innerHTML += '.'; //add one more dot character
           loadingModuleNameEl.innerHTML = map.name + (map.url ? ' at ' + map.url : '') ;
-        } else {
+      } else {
 
           //TODO later load, must have loading indicator for this then
-        }
-      };
-    });
-  });
+      }
+  };
+});
+});
 
   //load jquery plugins, backbone plugins //TODO this is a bit ugly
   require(
@@ -137,15 +142,15 @@
       //if it's prod mode, set log level to 'info'
       if (has('prod')) {
         $.log.setLevel($.log.LEVEL.INFO);
-      }
-      
+    }
+
       //boot the application
       
       require(['app'], function(app) {
         app.initialize();
-      });
-    }
-    );
+    });
+  }
+  );
 
 }).call(this);
 

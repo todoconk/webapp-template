@@ -22,25 +22,28 @@ define(
     'jquery',
     'underscore',
     'backbone',
-    'socketio'
+    'socketio',
+    'console'
     ],
-    function($, _, Backbone, io) {
+    function($, _, Backbone, io, console) {
 
         return Backbone.Model.extend({
             __initialize: function () {
                 this.socket = io.connect('http://localhost');
                 this.socket.on('news', function (data) {
-                    //$.log(data.hello);
+                    //$.log(data);
+                    console.log(data);
                     //this.name = data.hello;
                 });
             },
             initialize: function() {
                 this.__initialize();
+
                 var model = this;
                 this.bind("change", function(){
                     model.socket.emit('news', { hello: model.get("name") });      
                 });
             }
         });
-    }
+}
 );

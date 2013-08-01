@@ -15,34 +15,32 @@
 */
 
 /**
-* HelloWorld controller.
+* The Model to be extended for concrete model.
 */
 define(
     [
     'jquery',
     'underscore',
     'backbone',
-    'controller/Controller',
-    'collection/Collection',
-    'model/Model',
-    'view/HelloWorldView'
+    'socketio'
     ],
-    function($, _, Backbone, Controller, Collection, Model, HelloWorldView) {
+    function($, _, Backbone, io) {
 
-        return Controller.extend({
-            initialize: function(){
-                this.model = new Model({
-                    name: 'World'
-                });        
-            },
-            index: function() {
-                var helloWorldView = new HelloWorldView({
-                    $container: $('.watpl-container'),
-                    model: this.model
+        return Backbone.Model.extend({
+            __initialize: function () {
+                this.socket = io.connect('http://localhost');
+                this.socket.on('news', function (data) {
+                    //$.log(data.hello);
+                    //this.name = data.hello;
                 });
-                helloWorldView.render();
+            },
+            initialize: function() {
+                this.__initialize();
+                var model = this;
+                this.bind("change", function(){
+                    model.socket.emit('news', { hello: model.get("name") });      
+                });
             }
         });
-
     }
-    );
+);

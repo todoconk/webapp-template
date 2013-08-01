@@ -20,12 +20,12 @@
  * @author hoatle
  */
 
-define(
+ define(
   [
-    'jquery',
-    'underscore',
-    'backbone',
-    'handlebars'
+  'jquery',
+  'underscore',
+  'backbone',
+  'handlebars'
   ],
   function($, _, Backbone, HandleBars) {
 
@@ -37,16 +37,17 @@ define(
        * @param options
        * @return {*}
        */
-      beforeInitialize: function(options) {
+       beforeInitialize: function(options) {
         return this;
-      },
+    },
 
       /**
        * Initializes the view.
        *
        * @param options the options literal object, usually have: $container, model and appendable attribute.
        */
-      initialize: function(options) {
+       initialize: function(options) {
+
         //the global pubSub channel for all views to share common triggers and event handlers.
         //this is useful when there are many nested views and we want to communicate with top most views.
         //very useful for views' communication.
@@ -69,14 +70,14 @@ define(
 
         if (this.textTemplate && !this.template) {
           this.template = HandleBars.compile(this.textTemplate);
-        }
+      }
 
-        if (this.template) {
+      if (this.template) {
           var model = this.model.toJSON ? this.model.toJSON() : this.model;
           this.setElement(this.template(model));
-        }
-        this.afterInitialize.apply(this, arguments);
-      },
+      }
+      this.afterInitialize.apply(this, arguments);
+  },
 
       /**
        * The after-initialize phase for override
@@ -84,81 +85,81 @@ define(
        * @param options
        * @return {*}
        */
-      afterInitialize: function(options) {
+       afterInitialize: function(options) {
         return this;
-      },
+    },
 
       /**
        * The pre render phase for override
        *
        * @return {*}
        */
-      beforeRender: function() {
+       beforeRender: function() {
         return this;
-      },
+    },
 
-      container: function(){
+    container: function(){
         return _.isString(this.$container) ? this.$(this.$container) : this.$container;
-      },
+    },
 
       /**
        * Renders the view
        *
        * @return {*}
        */
-      render: function() {
+       render: function() {
         this.beforeRender();
 
         if (_ensureValid()) {
           var c = this.container();
           if (this.appendable) {
             c.append(this.$el);
-          } else {
+        } else {
             c.html(this.$el);
-          }
-          this.delegateEvents();
         }
+        this.delegateEvents();
+    }
 
-        this.afterRender();
+    this.afterRender();
 
-        this.rendered = true;
+    this.rendered = true;
 
-        return this;
-      },
+    return this;
+},
 
       /**
        * The after render phase for override
        *
        * @return {*}
        */
-      afterRender: function() {
+       afterRender: function() {
         return this;
-      },
+    },
 
-      update: function(model) {
+    update: function(model) {
         this.model = model;
         this.destroy();
         this.initialize();
         this.render();
-      },
+    },
 
       /**
        * Destroy this view
        * //TODO make sure no memory leak for event handling
        */
-      destroy: function() {
+       destroy: function() {
         this.$el.remove();
-      }
-
-    });
-
-    function _ensureValid() {
-      if (_.isNull(this.$container) || _.isNull(this.el)) {
-        $.log('this.$container or this.el is null, invalid state');
-        return false;
-      }
-      return true;
     }
 
-  }
+});
+
+function _ensureValid() {
+  if (_.isNull(this.$container) || _.isNull(this.el)) {
+    $.log('this.$container or this.el is null, invalid state');
+    return false;
+}
+return true;
+}
+
+}
 );

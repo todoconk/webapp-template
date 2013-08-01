@@ -36,7 +36,7 @@
       'underscore': 'lib/underscore/underscore-1.4.2',
       'backbone': 'lib/backbone/backbone-0.9.2',
       'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
-      //'socketio': '/socket.io/socket.io',
+      'socketio': '/socket.io/socket.io',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
       'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'
     },
@@ -44,11 +44,11 @@
     waitSeconds: has('prod') ? 2000 : 2, //2000 seconds for prod mode on bootstrap and 2 seconds for dev mode
 
     shim: {
-      /*
+      
       'socketio': {
         exports: 'io'
       },
-      */
+      
       json2: {
         exports: 'JSON'
       },
@@ -127,7 +127,6 @@
   require(
     [
     'jquery',
-    //'socketio',
     'bootstrap',
     'jquery.log',
     'backbone',
@@ -140,15 +139,8 @@
         $.log.setLevel($.log.LEVEL.INFO);
       }
       
-      /*
       //boot the application
-      var socket = io.connect('http://localhost');
-      socket.on('news', function (data) {
-        //console.log(data);
-        socket.emit('my other event', { my: 'data' });
-      });
-      */
-     
+      
       require(['app'], function(app) {
         app.initialize();
       });

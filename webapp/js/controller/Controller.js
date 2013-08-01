@@ -17,11 +17,11 @@
 /**
  * The Controller to be extended for concrete controller.
  */
-define(
+ define(
   [
-    'jquery',
-    'underscore',
-    'backbone'
+  'jquery',
+  'underscore',
+  'backbone'
   ],
   function($, _, Backbone) {
 
@@ -45,16 +45,16 @@ define(
        * }
        * </pre>
        */
-      actions: {
+       actions: {
 
-      },
+       },
       /**
        * Initialize an empty function by default. Override it with
        * your own initialization logic.
        */
-      initialize: function() {
-
-      },
+       initialize: function() {
+        
+       },
 
       /**
        * Defines url action to map with a string method a action function to be called.
@@ -66,7 +66,7 @@ define(
        * @param urlAction
        * @param methodAction
        */
-      action: function(urlAction, methodAction) {
+       action: function(urlAction, methodAction) {
         this.actions[urlAction] =  methodAction;
       },
 
@@ -77,6 +77,6 @@ define(
 
     });
 
-    return Controller;
-  }
+return Controller;
+}
 );

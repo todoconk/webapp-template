@@ -54,7 +54,8 @@ app.listen(env.port(), function() {
 });
 
 io.configure(function () {
-  io.set("transports", ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
+  //io.set("transports", ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
+  io.set("transports", ['xhr-polling']);
   io.set("polling duration", 10);
 });
 

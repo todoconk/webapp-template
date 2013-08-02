@@ -53,8 +53,14 @@ app.listen(env.port(), function() {
     logger.info('Listening on port: ' + env.port());
 });
 
+io.configure(function () {
+  io.set("transports", ['websocket', 'flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
+  io.set("polling duration", 10);
+});
+
 io.sockets.on('connection', function (socket) {
+    socket.emit('connected');
     socket.on('news', function (data) {
-        socket.emit('news', { hello: data });
+        socket.emit('news', data);
     });
 });

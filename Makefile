@@ -69,7 +69,7 @@ deploy-heroku:
 	git push heroku master
 
 deploy-appfog:
-	af update watpl --no-resources #--no-resources to avoid: Error 402: App packaging failed: 'Failed synchronizing resource pool'
+	af update webapp-template-crud --no-resources #--no-resources to avoid: Error 402: App packaging failed: 'Failed synchronizing resource pool'
 
 #make sure to have nodester repository for deployment
 
@@ -82,7 +82,8 @@ deploy-jitsu:
 # This is just the steps to deploy app, the configuration for each hosting services must be done for each service
 # before using this short-hand deployment command.
 
-deploy: deploy-dotcloud deploy-heroku deploy-appfog deploy-nodester deploy-jitsu
+#deploy: deploy-dotcloud deploy-heroku deploy-appfog deploy-nodester deploy-jitsu
+deploy: deploy-heroku deploy-appfog
 
 .DEFAULT_GOAL := resolve
 

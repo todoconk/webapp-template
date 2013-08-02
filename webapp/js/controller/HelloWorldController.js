@@ -22,18 +22,19 @@ define(
     'jquery',
     'underscore',
     'backbone',
+    'console',
     'controller/Controller',
     'collection/Collection',
     'model/Model',
     'view/HelloWorldView'
     ],
-    function($, _, Backbone, Controller, Collection, Model, HelloWorldView) {
+    function($, _, Backbone, console, Controller, Collection, Model, HelloWorldView) {
 
         return Controller.extend({
             initialize: function(){
                 this.model = new Model({
                     name: 'World'
-                });        
+                });
             },
             index: function() {
                 var helloWorldView = new HelloWorldView({

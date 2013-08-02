@@ -29,21 +29,30 @@ define(
 
         return Backbone.Model.extend({
             __initialize: function () {
+                var self = this; 
                 this.socket = io.connect('http://localhost');
-                this.socket.on('news', function (data) {
-                    //$.log(data);
-                    console.log(data);
-                    //this.name = data.hello;
+                this.socket.on('connected', function () {
+                    console.log("Hey I'm connected!");
                 });
+                this.socket.on('news', function (data) {
+                    console.log("Response: " + data.hello);
+                    self.set( "name", data.hello );
+                    console.log("Verify: " +  self.get("name"));
+                });
+            },
+            handle_news: function(){
+                console.log("Good News!!!");
             },
             initialize: function() {
                 this.__initialize();
 
-                var model = this;
+                this.bind("news", this.handle_news, this);
+
                 this.bind("change", function(){
-                    model.socket.emit('news', { hello: model.get("name") });      
+                    console.log("Emitting: " + this.get("name"));
+                    this.socket.emit('news', { hello: this.get("name") });
                 });
             }
         });
-}
-);
+    }
+    );

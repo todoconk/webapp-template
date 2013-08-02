@@ -4,6 +4,7 @@ Web application structure template (layout), starting point for backbone + requi
 
 ## Live development deployment at:
 * http://webapp-template-crud.herokuapp.com
+* http://webapp-template-crud.hp.af.cm
 
 ## MVC
 + take advantage of convention over configuration.

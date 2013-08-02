@@ -17,33 +17,36 @@
 /**
  * The HelloWorld view
  */
-define(
-  [
+ define(
+    [
     'jquery',
     'underscore',
     'backbone',
+    'console',
     'view/BaseView',
     'text!../template/HelloWorldTemplate.html'
-  ],
-  function($, _, Backbone, BaseView, textTemplate) {
+    ],
+    function($, _, Backbone, console, BaseView, textTemplate) {
 
-    return BaseView.extend({
-      textTemplate: textTemplate,
-      afterRender: function() {
+        return BaseView.extend({
+            textTemplate: textTemplate,
+            afterRender: function() {
 
-        this.modelBinder.bind(this.model, this.$el);
+                this.model.bind("change", function(){
+                    console.log("hey I'm changed in View");
+                });
 
-        this.$('#name').on('keyup', $.proxy(function(e) {
-          var $el = $(e.target), val = $el.val();
+                this.modelBinder.bind(this.model, this.$el);
 
-          if (val !== $el.data('val')) {
-            this.model.set('name', val);
-            $el.data('val', val);
-          }
+                this.$('#name').on('keyup', $.proxy(function(e) {
+                    var $el = $(e.target), val = $el.val();
 
-        }, this));
-
-      }
-    });
-  }
-);
+                    if (val !== $el.data('val')) {
+                        this.model.set('name', val);
+                        //$el.data('val', val);
+                    }
+                }, this));
+            }
+        });
+    }
+    );

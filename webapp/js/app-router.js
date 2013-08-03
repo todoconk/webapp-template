@@ -1,5 +1,5 @@
 /*
- * Copyright (C) hoatle
+ * Copyright (C) TodoConK
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,8 @@ define(
   function(_, Backbone, Router) {
     var AppRouter = Router.extend({
       controllers: {
-        'hello-world': 'HelloWorld'
+        'hello-world': 'HelloWorld',
+        //'books': 'Books'
       }
     });
 

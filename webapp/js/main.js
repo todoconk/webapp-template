@@ -1,5 +1,5 @@
 /*
- * Copyright (C) hoatle
+ * Copyright (C) TodoConK
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@
       'socketio': '/socket.io/socket.io',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
       'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0',
-      'console': 'lib/console'
+      'console': 'lib/window/console'
   },
 
     waitSeconds: has('prod') ? 2000 : 2, //2000 seconds for prod mode on bootstrap and 2 seconds for dev mode

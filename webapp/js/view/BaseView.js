@@ -1,5 +1,5 @@
 /*
- * Copyright (C) hoatle
+ * Copyright (C) TodoConK
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
 /**
  * The BaseView to be extended by concrete views.
  *
- * @author hoatle
+ * @author TodoConK
  */
 
  define(

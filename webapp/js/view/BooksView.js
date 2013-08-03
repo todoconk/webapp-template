@@ -15,19 +15,24 @@
  */
 
 /**
- * The application entry point
+ * The Usuarios view
  */
+ define(
+    [
+    'jquery',
+    'underscore',
+    'backbone',
+    'console',
+    'view/BaseView',
+    'text!../template/BooksTemplate.html'
+    ],
+    function($, _, Backbone, console, BaseView, textTemplate) {
 
-define(['app-router'], function(AppRouter) {
-
-  function initialize() {
-    var appRouter = new AppRouter({
-      //options here
-    });
-    appRouter.start();
-  }
-
-  return {
-    initialize: initialize
-  };
-});
+        return BaseView.extend({
+            textTemplate: textTemplate,
+            afterRender: function() {
+                this.modelBinder.bind(this.model, this.$el);
+            }
+        });
+    }
+    );

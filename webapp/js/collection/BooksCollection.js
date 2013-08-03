@@ -15,34 +15,24 @@
 */
 
 /**
-* HelloWorld controller.
+* The Collection to be extended for concrete Collection.
 */
 define(
     [
     'jquery',
     'underscore',
     'backbone',
-    'controller/Controller',
     'collection/Collection',
-    'model/Model',
-    'view/HelloWorldView'
+    'model/BooksModel',
     ],
-    function($, _, Backbone, Controller, Collection, Model, HelloWorldView) {
+    function($, _, Backbone, Collection, BooksModel) {
 
-        return Controller.extend({
-            initialize: function(){
-                this.model = new Model({
-                    name: 'World'
-                });
-            },
-            index: function() {
-                var helloWorldView = new HelloWorldView({
-                    $container: $('.watpl-container'),
-                    model: this.model
-                });
-                helloWorldView.render();
+        return Collection.extend({
+            model : BooksModel,
+            url : "/books",
+            initialize: function() {
+
             }
         });
-
     }
     );

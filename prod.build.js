@@ -1,5 +1,5 @@
 /*
- * Copyright (C) hoatle
+ * Copyright (C) TodoConK
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -102,7 +102,7 @@
   //used to pass configuration values to UglifyJS.
   //See https://github.com/mishoo/UglifyJS for the possible values.
   uglify: {
-    //toplevel: true, //See problem: https://github.com/hoatle/webapp-template/issues/27
+    //toplevel: true, //See problem: https://github.com/TodoConK/webapp-template/issues/27
     ascii_only: true,
     beautify: false,
     max_line_length: 10000

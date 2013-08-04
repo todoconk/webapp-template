@@ -49,14 +49,14 @@ define(
                 }).render();
             },
             index: function() {
-                var indexView = new IndexView({}).render();
+                var indexView = new IndexView({});
 
                 var self = this;
                 _.each(this.collection.models, function(item){
                     self.renderItem(item);
                 }, this);
 
-                
+                indexView.render();
             }
         });
 

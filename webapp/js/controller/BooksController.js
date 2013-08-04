@@ -24,33 +24,38 @@ define(
     'backbone',
     'controller/Controller',
     'collection/BooksCollection',
-    'model/BooksModel',
-    'view/BooksView'
+    'view/books/IndexView',
+    'view/books/ItemView'
     ],
-    function($, _, Backbone, Controller, BooksCollection, BooksModel, BooksView) {
+    function($, _, Backbone, Controller, BooksCollection, IndexView, ItemView) {
 
         return Controller.extend({
             initialize: function(){
-                var books = [{title:"JS the good parts", author:"John Doe", releaseDate:"2009", keywords:"JavaScript Programming"},
-                {title:"CS the better parts", author:"John Doe", releaseDate:"2010", keywords:"CoffeeScript Programming"},
-                {title:"Scala for the impatient", author:"John Doe", releaseDate:"2011", keywords:"Scala Programming"},
-                {title:"American Psyco", author:"Bret Easton Ellis", releaseDate:"2012", keywords:"Novel Splatter"},
-                {title:"Eloquent JavaScript", author:"John Doe", releaseDate:"2013", keywords:"JavaScript Programming"}];
+                var books = [
+                {id: "1", title:"JS the good parts", author:"John Doe", releaseDate:"2009", keywords:"JavaScript Programming"},
+                {id: "2", title:"CS the better parts", author:"John Doe", releaseDate:"2010", keywords:"CoffeeScript Programming"},
+                {id: "3", title:"Scala for the impatient", author:"John Doe", releaseDate:"2011", keywords:"Scala Programming"},
+                {id: "4", title:"American Psyco", author:"Bret Easton Ellis", releaseDate:"2012", keywords:"Novel Splatter"},
+                {id: "5", title:"Eloquent JavaScript", author:"John Doe", releaseDate:"2013", keywords:"JavaScript Programming"}
+                ];
 
                 this.collection = new BooksCollection(books);
             },
-            renderBook: function(item){
-                var booksView = new BooksView({
-                    $container: $('.watpl-container'),
+            renderItem: function(item){
+                var itemView = new ItemView({
+                    $container: $('.container-fluid'),
+                    appendable: true,
                     model: item
                 }).render();
             },
             index: function() {
+                var indexView = new IndexView({}).render();
+
                 var self = this;
                 _.each(this.collection.models, function(item){
-                    console.log(item.attributes);
-                    self.renderBook(item);
+                    self.renderItem(item);
                 }, this);
+
                 
             }
         });

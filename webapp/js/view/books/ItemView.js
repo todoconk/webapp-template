@@ -15,24 +15,17 @@
  */
 
 /**
- * The Usuarios view
+ * The Books view
  */
  define(
     [
-    'jquery',
-    'underscore',
-    'backbone',
-    'console',
-    'view/BaseView',
-    'text!../template/BooksTemplate.html'
+    'view/books/IndexView',
+    'text!../../template/books/ItemTemplate.html'
     ],
-    function($, _, Backbone, console, BaseView, textTemplate) {
+    function(IndexView, textTemplate) {
 
-        return BaseView.extend({
-            textTemplate: textTemplate,
-            afterRender: function() {
-                this.modelBinder.bind(this.model, this.$el);
-            }
+        return IndexView.extend({
+            textTemplate: textTemplate
         });
     }
     );

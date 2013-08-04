@@ -15,24 +15,25 @@
  */
 
 /**
- * The router for application defining, should define on router.controllers attributes
- *
- * and can override default behavior on router#defaultController and router#indexController
+ * The Books view
  */
-
-define(
-  [
+ define(
+    [
+    'jquery',
     'underscore',
     'backbone',
-    'router'
-  ],
-  function(_, Backbone, Router) {
-    var AppRouter = Router.extend({
-      controllers: {
-        'hello-world': 'HelloWorld'
-      }
-    });
+    'console',
+    'view/BaseView',
+    'text!../../template/books/IndexTemplate.html'
+    ],
+    function($, _, Backbone, console, BaseView, textTemplate) {
 
-    return AppRouter;
-  }
-);
+        return BaseView.extend({
+            textTemplate: textTemplate,
+            $container: $('.watpl-container'),
+            afterRender: function() {
+                this.modelBinder.bind(this.model, this.$el);
+            }
+        });
+    }
+    );

@@ -36,16 +36,16 @@
       'underscore': 'lib/underscore/underscore-1.4.2',
       'backbone': 'lib/backbone/backbone-0.9.2',
       'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
-      'socketio': '/socket.io/socket.io',
+      //'socketio': '/socket.io/socket.io',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
       'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0',
-      'console': 'lib/window/console'
+      //'console': 'lib/window/console'
   },
 
     waitSeconds: has('prod') ? 2000 : 2, //2000 seconds for prod mode on bootstrap and 2 seconds for dev mode
 
     shim: {
-
+/*
         'console': {
             exports: 'console'
         },
@@ -53,7 +53,7 @@
         'socketio': {
             exports: 'io'
         },
-
+*/
         json2: {
             exports: 'JSON'
         },

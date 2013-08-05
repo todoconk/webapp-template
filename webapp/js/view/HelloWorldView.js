@@ -22,18 +22,18 @@
     'jquery',
     'underscore',
     'backbone',
-    'console',
+    //'console',
     'view/BaseView',
     'text!../template/HelloWorldTemplate.html'
     ],
-    function($, _, Backbone, console, BaseView, textTemplate) {
+    function($, _, Backbone, /*console, */BaseView, textTemplate) {
 
         return BaseView.extend({
             textTemplate: textTemplate,
             afterRender: function() {
 
                 this.model.bind("change", function(){
-                    console.log("hey I'm changed in View");
+                    //console.log("hey I'm changed in View");
                 });
 
                 this.modelBinder.bind(this.model, this.$el);

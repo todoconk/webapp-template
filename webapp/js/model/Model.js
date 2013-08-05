@@ -22,10 +22,10 @@ define(
     'jquery',
     'underscore',
     'backbone',
-    'socketio',
-    'console'
+    //'socketio',
+    //'console'
     ],
-    function($, _, Backbone, io, console) {
+    function($, _, Backbone/*, io,  console*/) {
 
         return Backbone.Model.extend({
             __initialize: function () {

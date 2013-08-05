@@ -29,8 +29,9 @@
     function($, _, Backbone, console, BaseView, textTemplate) {
 
         return BaseView.extend({
+            
             textTemplate: textTemplate,
-            $container: $('.watpl-container'),
+            
             afterRender: function() {
                 this.modelBinder.bind(this.model, this.$el);
             }

@@ -31,6 +31,7 @@ define(
 
         return Controller.extend({
             initialize: function(){
+
                 var books = [
                 {id: "1", title:"JS the good parts", author:"John Doe", releaseDate:"2009", keywords:"JavaScript Programming"},
                 {id: "2", title:"CS the better parts", author:"John Doe", releaseDate:"2010", keywords:"CoffeeScript Programming"},
@@ -42,23 +43,22 @@ define(
                 this.collection = new BooksCollection(books);
             },
             renderItem: function(item){
-                var itemView = new ItemView({
-                    $container: $('.container-fluid'),
+                return new ItemView({
+                    $container: $('.books'),
                     appendable: true,
                     model: item
-                }).render();
+                });
             },
             index: function() {
-                var indexView = new IndexView({});
+                var indexView = new IndexView({
+                    $container: $('.watpl-container')
+                }).render();
 
                 var self = this;
                 _.each(this.collection.models, function(item){
-                    self.renderItem(item);
+                    self.renderItem(item).render();
                 }, this);
-
-                indexView.render();
             }
         });
-
-}
+    }
 );

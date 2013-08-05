@@ -25,7 +25,23 @@
     function(IndexView, textTemplate) {
 
         return IndexView.extend({
-            textTemplate: textTemplate
+            textTemplate: textTemplate,
+            events : {
+                'click button.btn-remove' : 'removeItem',
+                'click button.btn-edit' : 'editItem'
+            },
+            editItem : function () {
+                
+            },
+            removeItem : function () {
+                if(!confirm("Are you sure?")){
+                    return;
+                }
+                this.destroy();
+            },
+            afterRender: function() {
+                this.modelBinder.bind(this.model, this.$el);
+            }
         });
     }
     );

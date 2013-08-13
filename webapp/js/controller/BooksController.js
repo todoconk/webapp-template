@@ -33,11 +33,11 @@ define(
             initialize: function(){
 
                 var books = [
-                {id: "1", title:"JS the good parts", author:"John Doe", releaseDate:"2009", keywords:"JavaScript Programming"},
-                {id: "2", title:"CS the better parts", author:"John Doe", releaseDate:"2010", keywords:"CoffeeScript Programming"},
-                {id: "3", title:"Scala for the impatient", author:"John Doe", releaseDate:"2011", keywords:"Scala Programming"},
-                {id: "4", title:"American Psyco", author:"Bret Easton Ellis", releaseDate:"2012", keywords:"Novel Splatter"},
-                {id: "5", title:"Eloquent JavaScript", author:"John Doe", releaseDate:"2013", keywords:"JavaScript Programming"}
+                { id: "1", title:"JS the good parts", author:"John Doe", releaseDate:"2009", keywords:"JavaScript Programming"},
+                { id: "2", title:"CS the better parts", author:"John Doe", releaseDate:"2010", keywords:"CoffeeScript Programming"},
+                { id: "3", title:"Scala for the impatient", author:"John Doe", releaseDate:"2011", keywords:"Scala Programming"},
+                { id: "4", title:"American Psyco", author:"Bret Easton Ellis", releaseDate:"2012", keywords:"Novel Splatter"},
+                { id: "5", title:"Eloquent JavaScript", author:"John Doe", releaseDate:"2013", keywords:"JavaScript Programming"}
                 ];
 
                 this.collection = new BooksCollection(books);

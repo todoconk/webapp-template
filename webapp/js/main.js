@@ -38,7 +38,7 @@
       'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
       //'socketio': '/socket.io/socket.io',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
-      'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0',
+      'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'
       //'console': 'lib/window/console'
   },
 

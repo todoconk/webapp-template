@@ -22,10 +22,9 @@ define(
     'jquery',
     'underscore',
     'backbone',
-    'console',
     'model/Model'
     ],
-    function($, _, Backbone, console, Model) {
+    function($, _, Backbone, Model) {
 
         return Model.extend({
             // We can pass it default values.

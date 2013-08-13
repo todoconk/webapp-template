@@ -22,11 +22,10 @@
     'jquery',
     'underscore',
     'backbone',
-    //'console',
     'view/BaseView',
     'text!../template/HelloWorldTemplate.html'
     ],
-    function($, _, Backbone, /*console, */BaseView, textTemplate) {
+    function($, _, Backbone, BaseView, textTemplate) {
 
         return BaseView.extend({
             textTemplate: textTemplate,

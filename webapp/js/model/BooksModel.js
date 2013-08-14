@@ -29,10 +29,10 @@ define(
         return Model.extend({
             // We can pass it default values.
             defaults : {
-                title:"Some title defaults",
-                author:"John Doe",
-                releaseDate:"2012",
-                keywords:"JavaScript Programming"
+                title:"",
+                author:"",
+                releaseDate:"",
+                keywords:""
             },
 
             url : function() {

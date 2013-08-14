@@ -29,13 +29,13 @@
   require.config({
     paths: {
       'domReady': 'lib/require/plugins/domReady-2.0.1',
-      'text': 'lib/require/plugins/text-2.0.3',
-      'handlebars': 'lib/handlebars/handlebars-1.0.rc.1',
+      'text': 'lib/require/plugins/text-2.0.10',
+      'handlebars': 'lib/handlebars/handlebars-1.0.0',
       'json2': 'lib/json/json2',
-      'jquery': 'lib/jquery/jquery-1.7.1',
-      'underscore': 'lib/underscore/underscore-1.4.2',
-      'backbone': 'lib/backbone/backbone-0.9.2',
-      'Backbone.ModelBinder': 'lib/backbone/plugins/Backbone.ModelBinder-0.1.5',
+      'jquery': 'lib/jquery/jquery-2.0.3',
+      'underscore': 'lib/underscore/underscore-1.5.1',
+      'backbone': 'lib/backbone/backbone-1.0.0',
+      'Backbone.ModelBinder': 'lib/backbone/plugins/modelbinder/Backbone.ModelBinder-1.0.2',
       //'socketio': '/socket.io/socket.io',
       'bootstrap': 'lib/jquery/plugins/bootstrap-2.1.1',
       'jquery.log': 'lib/jquery/plugins/jquery.log-0.1.0'

@@ -31,7 +31,6 @@ define(
 
         return Controller.extend({
             initialize: function(){
-
                 var books = [
                 { id: "1", title:"JS the good parts", author:"John Doe", releaseDate:"2009", keywords:"JavaScript Programming"},
                 { id: "2", title:"CS the better parts", author:"John Doe", releaseDate:"2010", keywords:"CoffeeScript Programming"},

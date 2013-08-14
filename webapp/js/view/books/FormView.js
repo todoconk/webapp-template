@@ -23,12 +23,20 @@
     'underscore',
     'backbone',
     'view/BaseView',
-    'text!../../template/books/IndexTemplate.html'
+    'text!../../template/books/FormTemplate.html'
     ],
     function($, _, Backbone, BaseView, textTemplate) {
 
         return BaseView.extend({
             textTemplate: textTemplate,
+            events : {
+                'click button.btn-save' : 'save'
+            },
+            save: function(){
+                this.modelBinder.bind(this.model, this.$el);
+                console.log(this.model.toJSON());
+                console.log('Saving record');
+            }
         });
     }
     );

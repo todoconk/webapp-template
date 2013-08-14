@@ -121,6 +121,9 @@ define(
                 }
 
                 this.afterRender();
+
+                this.modelBinder.bind(this.model, this.$el);
+
                 this.rendered = true;
                 return this;
             },
@@ -168,12 +171,12 @@ define(
             }
         });
 
-function _ensureValid() {
-    if (_.isNull(this.$container) || _.isNull(this.el)) {     
-        $.log('this.$container or this.el is null, invalid state');
-        return false;
+        function _ensureValid() {
+            if (_.isNull(this.$container) || _.isNull(this.el)) {     
+                $.log('this.$container or this.el is null, invalid state');
+                return false;
+            }
+            return true;
+        }
     }
-    return true;
-}
-}
 );

@@ -19,28 +19,30 @@
  */
  define(
     [
-    'view/books/IndexView',
+    'view/BaseView',
+    'view/books/FormView',
     'text!../../template/books/ItemTemplate.html'
     ],
-    function(IndexView, textTemplate) {
+    function(BaseView, FormView, textTemplate) {
 
-        return IndexView.extend({
+        return BaseView.extend({
             textTemplate: textTemplate,
             events : {
-                'click button.btn-remove' : 'removeItem',
-                'click button.btn-edit' : 'editItem'
+                'click button.btn-remove' : 'remove',
+                'click button.btn-edit' : 'edit'
             },
-            editItem : function () {
-                
+            edit: function () {
+                var formView = new FormView({
+                    $container: $('#formModal'),
+                    model: this.model
+                });
+                formView.render();
             },
-            removeItem : function () {
+            remove: function () {
                 if(!confirm("Are you sure?")){
                     return;
                 }
                 this.destroy();
-            },
-            afterRender: function() {
-                this.modelBinder.bind(this.model, this.$el);
             }
         });
     }

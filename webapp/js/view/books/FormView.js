@@ -30,13 +30,23 @@
         return BaseView.extend({
             textTemplate: textTemplate,
             events : {
-                'click button.btn-save' : 'save'
+                'submit': 'save'
             },
-            save: function(){
+            afterRender: function() {
+                //this.model.on('change', this.render, this);
                 this.modelBinder.bind(this.model, this.$el);
-                console.log(this.model.toJSON());
-                console.log('Saving record');
+            },
+            save: function(event){
+                event.preventDefault();
+                console.log(this.$el.siblings("form"));
+                console.log(this.$el.siblings("form").serializeArray());
+                //
+                var arr = this.$el.serializeArray();
+                var data = _(arr).reduce(function(acc, field) {
+                  acc[field.name] = field.value;
+                  return acc;
+              }, {});
             }
         });
-    }
-    );
+}
+);

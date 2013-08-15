@@ -40,6 +40,8 @@ define(
                 ];
 
                 this.collection = new BooksCollection(books);
+
+                //this.model.on('change', this.renderItem, this);
             },
             renderItem: function(item){
                 return new ItemView({

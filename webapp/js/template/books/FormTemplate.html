@@ -2,18 +2,17 @@
 	<button type="button" class="close" data-dismiss="modal">&times;</button>
 	<h3>Modal header</h3>
 </div>
-<form action="#" method="post" class="form">
-	<div class="modal-body">
-		<ul>
-			<li>ID: <input type="text" value="{{id}}"></li>
-			<li>Title: <input type="text" value="{{title}}"></li>
-			<li>Author: <input type="text" value="{{author}}"></li>
-			<li>Release date: <input type="text" value="{{releaseDate}}"></li>
-			<li>Keywords: <input type="text" value="{{keywords}}"></li>
-		</ul>
-	</div>
-	<div class="modal-footer">
-		<button data-dismiss="modal" class="btn">Close</button>
-		<button class="btn btn-primary btn-save">Save changes</button>
-	</div>
-</form>
+
+<div class="modal-body">
+	<ul>
+		<li>ID: <input type="text" name="id" value="{{id}}"></li>
+		<li>Title: <input type="text" name="title" value="{{title}}"></li>
+		<li>Author: <input type="text" name="author" value="{{author}}"></li>
+		<li>Release date: <input type="text" name="releaseDate" value="{{releaseDate}}"></li>
+		<li>Keywords: <input type="text" name="keywords" value="{{keywords}}"></li>
+	</ul>
+</div>
+<div class="modal-footer">
+	<button data-dismiss="modal" class="btn">Close</button>
+	<button class="btn btn-primary btn-save">Save changes</button>
+</div>

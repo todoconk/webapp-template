@@ -24,10 +24,11 @@ define(
     'backbone',
     'controller/Controller',
     'collection/BooksCollection',
+    'model/BooksModel',
     'view/books/IndexView',
     'view/books/ItemView'
     ],
-    function($, _, Backbone, Controller, BooksCollection, IndexView, ItemView) {
+    function($, _, Backbone, Controller, BooksCollection, BooksModel, IndexView, ItemView) {
 
         return Controller.extend({
             initialize: function(){
@@ -40,14 +41,13 @@ define(
                 ];
 
                 this.collection = new BooksCollection(books);
-
-                //this.model.on('change', this.renderItem, this);
+                this.model = new BooksModel();
             },
-            renderItem: function(item){
+            renderItem: function(){
                 return new ItemView({
                     $container: $('.books'),
                     appendable: true,
-                    model: item
+                    model: this.model
                 });
             },
             index: function() {
@@ -57,9 +57,10 @@ define(
 
                 var self = this;
                 _.each(this.collection.models, function(item){
-                    self.renderItem(item).render();
+                    this.model = item;
+                    self.renderItem().render();
                 }, this);
             }
         });
-    }
+}
 );

@@ -30,23 +30,14 @@
         return BaseView.extend({
             textTemplate: textTemplate,
             events : {
-                'submit': 'save'
-            },
-            afterRender: function() {
-                //this.model.on('change', this.render, this);
-                this.modelBinder.bind(this.model, this.$el);
+                'click .btn-save': 'save'
             },
             save: function(event){
                 event.preventDefault();
-                console.log(this.$el.siblings("form"));
-                console.log(this.$el.siblings("form").serializeArray());
-                //
-                var arr = this.$el.serializeArray();
-                var data = _(arr).reduce(function(acc, field) {
-                  acc[field.name] = field.value;
-                  return acc;
-              }, {});
+                //console.log(this.$elorigin);
+                //console.log(this.model.attributes);
+                this.$container.modal('hide');
             }
         });
-}
-);
+    }
+    );

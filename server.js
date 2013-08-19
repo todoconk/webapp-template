@@ -18,6 +18,7 @@ var env = require('./lib/vsf/environment');
 var express = require('express');
 var app = express.createServer();
 var io = require('socket.io').listen(app);
+var mongoose = require('mongoose'); 
 
 var connectLess = require('connect-less');
 var winston = require('winston');
@@ -28,6 +29,7 @@ var logger = require('./lib/logger');
 app.register('.html', require('jade'));
 
 app.configure(function () {
+
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
@@ -47,6 +49,16 @@ app.configure('prod', function () {
     logger.setLevels(winston.config.syslog.levels);
     app.use(express.static(__dirname + '/public'));
     logger.handleExceptions();
+});
+
+routes = require('./lib/vsf/routes/books')(app);
+
+mongoose.connect('mongodb://localhost/books', function(err, res) {
+  if(err) {
+    logger.info('ERROR: connecting to database. ' + err);
+} else {
+    logger.info('Connected to mongo database');
+}
 });
 
 app.listen(env.port(), function() {

@@ -87,12 +87,9 @@ deploy: deploy-heroku deploy-appfog
 
 # Custom calls
 create: 
-	ifndef ( $(module) )
-		@echo "You should specify a valid module=name"
-	else
-		@echo "argument is " $(module)
-	endif
+	ls -l 
 
+	
 .DEFAULT_GOAL := resolve
 
 .PHONY: clean, resolve, check-style, test, package, install, run-dev, run-prod, run, deploy, create

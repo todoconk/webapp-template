@@ -27,13 +27,15 @@ define(
     function($, _, Backbone, Model) {
 
         return Model.extend({
-            // We can pass it default values.
             defaults : {
                 title:"",
                 author:"",
                 releaseDate:"",
                 keywords:""
             },
+            urlRoot : "/books",
+            url : "/books" + this._id,
+            
             initialize: function() {
 
             }

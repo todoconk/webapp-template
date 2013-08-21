@@ -15,20 +15,20 @@
  */
 
 /**
- * The Books view
+ * The Mongo view
  */
  define(
     [
     'view/BaseView',
-    'view/books/FormView',
-    'text!../../template/books/ItemTemplate.html'
+    'view/mongo/FormView',
+    'text!../../template/mongo/ItemTemplate.html'
     ],
     function(BaseView, FormView, textTemplate) {
 
         return BaseView.extend({
             textTemplate: textTemplate,
             events : {
-                'click button.btn-remove' : 'remove',
+                'click button.btn-remove' : 'delete',
                 'click button.btn-edit' : 'edit'
             },
             edit: function () {
@@ -38,11 +38,11 @@
                 });
                 formView.render();
             },
-            remove: function () {
+            delete: function () {
                 if(!confirm("Are you sure?")){
                     return;
                 }
-                this.destroy();
+                this.remove();
             }
         });
     }

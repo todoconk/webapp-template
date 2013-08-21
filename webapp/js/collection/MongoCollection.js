@@ -28,8 +28,7 @@ define(
     function($, _, Backbone, Collection, MongoModel) {
 
         return Collection.extend({
-            model : MongoModel,
-            url : "/books",
+            url: "/books",
             initialize: function() {
 
             }

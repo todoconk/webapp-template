@@ -28,6 +28,20 @@ define(
         return Backbone.Collection.extend({
             initialize: function() {
 
+            },
+            /*
+            fetch: function() {         
+                typeof(options) != 'undefined' || (options = {});
+                options.success = this.postProcess;
+                options.error = this.handleError;
+                return Backbone.Collection.prototype.fetch.call(this, options);    
+            },
+            */
+            postProcess: function(data, status, xhr){
+                this.models = data.models;
+            }, 
+            handleError : function (data, status, xhr) {
+                alert("UPS!!");
             }
         });
     }

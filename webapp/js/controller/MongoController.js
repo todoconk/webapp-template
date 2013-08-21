@@ -25,8 +25,8 @@ define(
     'controller/Controller',
     'collection/MongoCollection',
     'model/MongoModel',
-    'view/books/IndexView',
-    'view/books/ItemView'
+    'view/mongo/IndexView',
+    'view/mongo/ItemView'
     ],
     function($, _, Backbone, Controller, MongoCollection, MongoModel, IndexView, ItemView) {
 
@@ -43,22 +43,20 @@ define(
                 });
             },
             index: function() {
+                var self = this;
+
                 var indexView = new IndexView({
                     $container: $('.watpl-container')
                 }).render();
 
-                this.collection.fetch();
-
-                console.log(this.collection);
-                console.log(this.collection.parse);
-
-                var self = this;
-                _.each(this.collection.models, function(i, item){
-                    console.log(item.toJSON());
-                    //this.model = item;
-                    //self.renderItem().render();
-                }, this);
+                this.collection.fetch({ success: function(data, status, xhr){
+                    _.each(data.models, function(item){
+                        self.model = item;
+                        self.renderItem().render();
+                    }, this);
+                }});
+                
             }
         });
-}
-);
+    }
+    );

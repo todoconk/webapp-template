@@ -24,8 +24,11 @@ define(
     'backbone',
     ],
     function($, _, Backbone) {
-
+        
+        Backbone.emulateHTTP = false;
+        
         return Backbone.Model.extend({
+
             __initialize: function () {
                 var self = this; 
                 this.socket = io.connect('http://localhost');

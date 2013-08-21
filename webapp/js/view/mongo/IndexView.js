@@ -15,7 +15,7 @@
  */
 
 /**
- * The Books view
+ * The Mongo view
  */
  define(
     [
@@ -23,7 +23,7 @@
     'underscore',
     'backbone',
     'view/BaseView',
-    'text!../../template/books/IndexTemplate.html'
+    'text!../../template/mongo/IndexTemplate.html'
     ],
     function($, _, Backbone, BaseView, textTemplate) {
 

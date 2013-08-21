@@ -15,7 +15,7 @@
  */
 
 /**
- * The Books view
+ * The Mongo view
  */
  define(
     [
@@ -23,7 +23,7 @@
     'underscore',
     'backbone',
     'view/BaseView',
-    'text!../../template/books/FormTemplate.html'
+    'text!../../template/mongo/FormTemplate.html'
     ],
     function($, _, Backbone, BaseView, textTemplate) {
 
@@ -34,9 +34,8 @@
             },
             save: function(event){
                 event.preventDefault();
-                //console.log(this.$elorigin);
-                //console.log(this.model.attributes);
-                this.$container.modal('hide');
+                this.model.save();
+                //this.$container.modal('hide');
             }
         });
     }
